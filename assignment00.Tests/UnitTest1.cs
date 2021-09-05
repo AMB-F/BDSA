@@ -43,11 +43,8 @@ namespace assignment00.Tests
         }
 
         [Theory]
-        [InlineData("4")]
-        [InlineData("40")]
-        [InlineData("396")]
+        [InlineData("1888")]
         [InlineData("2016")]
-        [InlineData("400")]
         [InlineData("4000")]
         [InlineData("1600")]
         [InlineData("2000")]
@@ -59,14 +56,13 @@ namespace assignment00.Tests
             Console.SetOut(writer);
             Console.SetIn(stringReader);
 
-            Program.Main(new string[0]);
+            Program.IsLeapYearUI();
             var output = writer.GetStringBuilder().ToString().Trim();
 
-            Assert.Equal(prompt+"yay", output);
+            Assert.Equal("yay", output);
         }
 
         [Theory]
-        [InlineData("200")]
         [InlineData("1800")]
         [InlineData("2100")]
         [InlineData("2900")]
@@ -78,12 +74,36 @@ namespace assignment00.Tests
             Console.SetOut(writer);
             Console.SetIn(stringReader);
 
-
-            Program.Main(new string[0]);
+            Program.IsLeapYearUI();
             var output = writer.GetStringBuilder().ToString().Trim();
 
-            Assert.Equal(prompt+"nay", output);
+            Assert.Equal("nay", output);
         }
+
+        [Theory]
+        [InlineData("1581")]
+        [InlineData("1500")]
+        [InlineData("1444")]
+        public void Main_when_given_year_before_1582_throws_ArgumentOutOfRangeException(string year){
+
+            var stringReader = new StringReader(year + Environment.NewLine);
+            Console.SetIn(stringReader);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Program.IsLeapYearUI());
+        }
+
+   [Theory]
+        [InlineData("hat")]
+        [InlineData("1a5b0c0")]
+        [InlineData(":)")]
+        public void Main_when_given_non_year_throws_FormatException(string year){
+
+            var stringReader = new StringReader(year + Environment.NewLine);
+            Console.SetIn(stringReader);
+            
+            Assert.Throws<FormatException>(() => Program.IsLeapYearUI());
+        }
+
 
     }
 }
