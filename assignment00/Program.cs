@@ -2,11 +2,15 @@
 
 namespace assignment00
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!!!");
+         
+        }
+
+        public static bool IsLeapYear(int year) {
+           return year%4==0 && year%100!=0 ? true : year%400==0;
         }
     }
 }
