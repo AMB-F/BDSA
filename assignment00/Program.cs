@@ -6,7 +6,9 @@ namespace assignment00
     {
         public static void Main(string[] args)
         {
-         
+            Console.WriteLine("Please enter a year and hit [enter]");
+            string yearInput = Console.ReadLine();
+            Console.WriteLine(IsLeapYear(int.Parse(yearInput)) ? "yay" : "nay");
         }
 
         public static bool IsLeapYear(int year) {
