@@ -25,7 +25,6 @@ namespace assignment00.Tests
         public void IsLeapYear_when_given_number_divisible_by_4_and_100_returns_false(int year)
         {
             bool result = Program.IsLeapYear(year);
-
             Assert.Equal(false, result);
         }
 
@@ -38,7 +37,6 @@ namespace assignment00.Tests
         public void IsLeapYear_when_given_number_divisible_by_400_returns_true(int year)
         {
             bool result = Program.IsLeapYear(year);
-
             Assert.Equal(true, result);
         }
 
@@ -85,7 +83,6 @@ namespace assignment00.Tests
         [InlineData("1500")]
         [InlineData("1444")]
         public void Main_when_given_year_before_1582_throws_ArgumentOutOfRangeException(string year){
-
             var stringReader = new StringReader(year + Environment.NewLine);
             Console.SetIn(stringReader);
 
@@ -97,7 +94,6 @@ namespace assignment00.Tests
         [InlineData("1a5b0c0")]
         [InlineData(":)")]
         public void Main_when_given_non_year_throws_FormatException(string year){
-
             var stringReader = new StringReader(year + Environment.NewLine);
             Console.SetIn(stringReader);
             
