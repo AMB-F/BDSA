@@ -30,9 +30,10 @@ namespace Assignment1
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            var regex = new Regex(@"<("+tag+")>(?<text>.*)</(\\1)>");
-            foreach(Match match in regex.Matches(html)){
-                yield return match.Groups["text"].Value;
+            var regex = new Regex(@"<(" + tag + ")>(?<text>.*)</(\\1)>");
+            foreach (Match match in regex.Matches(html))
+            {
+                yield return Regex.Replace(match.Groups["text"].Value, @"</?\w+>", "");
             }
 
         }
